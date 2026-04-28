@@ -24,6 +24,25 @@ h1 {
   color: #f5c518;
 }
 
+/* LANGUAGE SWITCH */
+.lang-switch {
+  margin-top: 10px;
+}
+
+.lang-switch button {
+  background: none;
+  border: 1px solid #555;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.lang-switch button.active {
+  border-color: #f5c518;
+  color: #f5c518;
+}
+
 /* TABS */
 .tabs {
   display: flex;
@@ -44,7 +63,7 @@ h1 {
   border-bottom: 2px solid #f5c518;
 }
 
-/* CONTENT */
+/* MENU */
 .container {
   max-width: 900px;
   margin: auto;
@@ -54,7 +73,7 @@ h1 {
 .item {
   display: flex;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 10px 0;
   border-bottom: 1px dashed #333;
 }
 
@@ -62,6 +81,21 @@ h1 {
   color: #f5c518;
 }
 
+/* CTA */
+.cta {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f5c518;
+  color: #000;
+  padding: 15px 25px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+/* HIDE */
 .hidden {
   display: none;
 }
@@ -72,87 +106,128 @@ h1 {
 
 <header>
   <h1>Vanatur Restaurant</h1>
-  <p>Մենյու</p>
+  <div class="lang-switch">
+    <button onclick="setLang('hy')" class="active">Հայերեն</button>
+    <button onclick="setLang('en')">English</button>
+  </div>
 </header>
 
-<!-- TABS -->
-<div class="tabs">
-  <div class="tab active" onclick="showTab('appetizers')">Նախուտեստներ</div>
-  <div class="tab" onclick="showTab('salads')">Աղցաններ</div>
-  <div class="tab" onclick="showTab('soups')">Ապուրներ</div>
-  <div class="tab" onclick="showTab('hot')">Տաք ուտեստներ</div>
-  <div class="tab" onclick="showTab('drinks')">Խմիչքներ</div>
-</div>
+<div class="tabs" id="tabs"></div>
 
-<div class="container">
+<div class="container" id="menu"></div>
 
-  <!-- APPETIZERS -->
-  <div id="appetizers" class="menu">
-    <div class="item"><span>Իկրա</span><span class="price">4500</span></div>
-    <div class="item"><span>Ձկան տեսականի</span><span class="price">10000</span></div>
-    <div class="item"><span>Հայկական պանրի տեսականի</span><span class="price">2300</span></div>
-    <div class="item"><span>Եվրոպական պանրի տեսականի</span><span class="price">4300</span></div>
-    <div class="item"><span>Մսի տեսականի</span><span class="price">4800</span></div>
-    <div class="item"><span>Տնական մսի տեսականի</span><span class="price">5500</span></div>
-    <div class="item"><span>Թթվի տեսականի</span><span class="price">1700</span></div>
-    <div class="item"><span>Քամած մածուն</span><span class="price">1000</span></div>
-    <div class="item"><span>Ղավուրմա</span><span class="price">3800</span></div>
-    <div class="item"><span>Թարմ բանջարեղեն</span><span class="price">2500</span></div>
-    <div class="item"><span>Հաց</span><span class="price">800</span></div>
-  </div>
-
-  <!-- SALADS -->
-  <div id="salads" class="menu hidden">
-    <div class="item"><span>Ամառային աղցան</span><span class="price">2500</span></div>
-    <div class="item"><span>Հունական աղցան</span><span class="price">3000</span></div>
-    <div class="item"><span>Կեսար (հավով)</span><span class="price">3600</span></div>
-    <div class="item"><span>Կեսար (կրեվետկայով)</span><span class="price">4500</span></div>
-    <div class="item"><span>Կապրեզե</span><span class="price">2200</span></div>
-    <div class="item"><span>Հումուս</span><span class="price">1500</span></div>
-    <div class="item"><span>Մութաբալ</span><span class="price">2000</span></div>
-  </div>
-
-  <!-- SOUPS -->
-  <div id="soups" class="menu hidden">
-    <div class="item"><span>Սպաս</span><span class="price">1200</span></div>
-    <div class="item"><span>Սոլյանկա</span><span class="price">1800</span></div>
-    <div class="item"><span>Բորշ</span><span class="price">1700</span></div>
-    <div class="item"><span>Խարչո</span><span class="price">1700</span></div>
-    <div class="item"><span>Փիթի</span><span class="price">1700</span></div>
-    <div class="item"><span>Հավով ապուր</span><span class="price">1500</span></div>
-  </div>
-
-  <!-- HOT DISHES -->
-  <div id="hot" class="menu hidden">
-    <div class="item"><span>Խոզի ռիբս</span><span class="price">5000</span></div>
-    <div class="item"><span>Խոզի չալաղաջ</span><span class="price">3700</span></div>
-    <div class="item"><span>Տավարի քաբաբ</span><span class="price">1300</span></div>
-    <div class="item"><span>Տոլմա</span><span class="price">2500</span></div>
-    <div class="item"><span>Քյուֆթա</span><span class="price">7000</span></div>
-    <div class="item"><span>Հավի քաբաբ</span><span class="price">1200</span></div>
-    <div class="item"><span>Հավի թևեր</span><span class="price">1500</span></div>
-  </div>
-
-  <!-- DRINKS -->
-  <div id="drinks" class="menu hidden">
-    <div class="item"><span>Ջուր</span><span class="price">300</span></div>
-    <div class="item"><span>Կոլա / Ֆանտա</span><span class="price">300</span></div>
-    <div class="item"><span>Կոմպոտ</span><span class="price">1500</span></div>
-    <div class="item"><span>Մոխիտո</span><span class="price">2000</span></div>
-    <div class="item"><span>Գինի</span><span class="price">3000+</span></div>
-    <div class="item"><span>Օղի</span><span class="price">7000+</span></div>
-  </div>
-
-</div>
+<a href="tel:041551000" class="cta">📞 041 551000</a>
 
 <script>
-function showTab(tabId) {
-  document.querySelectorAll('.menu').forEach(el => el.classList.add('hidden'));
-  document.getElementById(tabId).classList.remove('hidden');
 
-  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+/* LANGUAGE */
+let currentLang = 'hy';
+
+function setLang(lang) {
+  currentLang = lang;
+
+  document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
+
+  renderTabs();
+  renderMenu(Object.keys(menuData)[0]);
 }
+
+/* MENU DATA (YOU CAN EXTEND THIS CLEANLY) */
+const menuData = {
+
+  appetizers: {
+    name: {hy: "Նախուտեստներ", en: "Appetizers"},
+    items: [
+      {hy: "Իկրա", en: "Caviar", price: "4500"},
+      {hy: "Ձկան տեսականի", en: "Fish assortment", price: "10000"},
+      {hy: "Հայկական պանիր", en: "Armenian cheese", price: "2300"},
+      {hy: "Մսի տեսականի", en: "Meat assortment", price: "4800"},
+      {hy: "Թարմ բանջարեղեն", en: "Fresh vegetables", price: "2500"},
+      {hy: "Հաց", en: "Bread", price: "800"}
+    ]
+  },
+
+  salads: {
+    name: {hy: "Աղցաններ", en: "Salads"},
+    items: [
+      {hy: "Ամառային աղցան", en: "Summer salad", price: "2500"},
+      {hy: "Հունական աղցան", en: "Greek salad", price: "3000"},
+      {hy: "Կեսար (հավ)", en: "Caesar (chicken)", price: "3600"},
+      {hy: "Կեսար (կրեվետկա)", en: "Caesar (shrimp)", price: "4500"},
+      {hy: "Կապրեզե", en: "Caprese", price: "2200"}
+    ]
+  },
+
+  soups: {
+    name: {hy: "Ապուրներ", en: "Soups"},
+    items: [
+      {hy: "Սպաս", en: "Spas", price: "1200"},
+      {hy: "Սոլյանկա", en: "Solyanka", price: "1800"},
+      {hy: "Բորշ", en: "Borscht", price: "1700"},
+      {hy: "Խարչո", en: "Kharcho", price: "1700"}
+    ]
+  },
+
+  hot: {
+    name: {hy: "Տաք ուտեստներ", en: "Hot Dishes"},
+    items: [
+      {hy: "Խոզի ռիբս", en: "Pork ribs", price: "5000"},
+      {hy: "Տավարի քաբաբ", en: "Beef kebab", price: "1300"},
+      {hy: "Հավի քաբաբ", en: "Chicken kebab", price: "1200"},
+      {hy: "Քյուֆթա", en: "Kyufta", price: "7000"}
+    ]
+  },
+
+  drinks: {
+    name: {hy: "Խմիչքներ", en: "Drinks"},
+    items: [
+      {hy: "Ջուր", en: "Water", price: "300"},
+      {hy: "Կոլա", en: "Cola", price: "300"},
+      {hy: "Կոմպոտ", en: "Compote", price: "1500"},
+      {hy: "Մոխիտո", en: "Mojito", price: "2000"}
+    ]
+  }
+
+};
+
+/* RENDER */
+function renderTabs() {
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+
+  Object.keys(menuData).forEach((key, i) => {
+    const tab = document.createElement('div');
+    tab.className = 'tab ' + (i === 0 ? 'active' : '');
+    tab.innerText = menuData[key].name[currentLang];
+    tab.onclick = () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderMenu(key);
+    };
+    tabs.appendChild(tab);
+  });
+}
+
+function renderMenu(category) {
+  const container = document.getElementById('menu');
+  container.innerHTML = '';
+
+  menuData[category].items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.innerHTML = `
+      <span>${item[currentLang]}</span>
+      <span class="price">${item.price}</span>
+    `;
+    container.appendChild(div);
+  });
+}
+
+/* INIT */
+renderTabs();
+renderMenu('appetizers');
+
 </script>
 
 </body>
