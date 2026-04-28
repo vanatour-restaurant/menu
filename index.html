@@ -51,36 +51,25 @@ body {
 /* SECTION */
 .section {
   padding: 20px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
-/* GALLERY */
-.gallery {
+/* CATEGORY TITLE */
+.category-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: gold;
+}
+
+/* GRID MENU */
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 10px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* BEST SELLERS */
-.best {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap: 15px;
 }
 
+/* CARD */
 .card {
   background: #1a1a1a;
   border-radius: 10px;
@@ -94,7 +83,7 @@ body {
 
 .card img {
   width: 100%;
-  height: 140px;
+  height: 160px;
   object-fit: cover;
 }
 
@@ -104,32 +93,6 @@ body {
 
 .price {
   color: gold;
-}
-
-/* TABS */
-.tabs {
-  display: flex;
-  overflow-x: auto;
-  border-bottom: 1px solid #333;
-}
-
-.tab {
-  padding: 10px 15px;
-  cursor: pointer;
-  color: #aaa;
-}
-
-.tab.active {
-  color: gold;
-  border-bottom: 2px solid gold;
-}
-
-/* MENU */
-.menu-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px dashed #333;
 }
 
 /* CTA */
@@ -161,39 +124,8 @@ body {
   <button onclick="setLang('en')">English</button>
 </div>
 
-<!-- GALLERY -->
-<div class="section">
-  <h2>📸 Restaurant Atmosphere</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
-    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4">
-    <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17">
-    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9">
-  </div>
-</div>
-
-<!-- FOOD GALLERY -->
-<div class="section">
-  <h2>🍽️ Signature Dishes</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
-    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
-    <img src="https://images.unsplash.com/photo-1544025162-d76694265947">
-    <img src="https://images.unsplash.com/photo-1604908176997-4317c3c8d1a6">
-  </div>
-</div>
-
-<!-- BEST SELLERS -->
-<div class="section">
-  <h2 id="bestTitle">🔥 Լավագույն ուտեստներ</h2>
-  <div class="best" id="best"></div>
-</div>
-
 <!-- MENU -->
-<div class="section">
-  <div class="tabs" id="tabs"></div>
-  <div id="menu"></div>
-</div>
+<div id="menu"></div>
 
 <!-- CTA -->
 <a href="tel:041551000" class="cta">📞 041 551000</a>
@@ -202,101 +134,132 @@ body {
 let lang = 'hy';
 
 const data = {
-  best: [
-    {hy:"Քյուֆթա", en:"Kyufta", price:"7000", img:"https://images.unsplash.com/photo-1604908176997-4317c3c8d1a6"},
-    {hy:"Խոզի ռիբս", en:"Pork ribs", price:"5000", img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
-    {hy:"Կեսար աղցան", en:"Caesar salad", price:"3600", img:"https://images.unsplash.com/photo-1550304943-4f24f54ddde9"}
-  ],
+  appetizers: {
+    hy:"Նախուտեստներ",
+    en:"Appetizers",
+    items:[
+      {
+        hy:"Իկրա",
+        en:"Caviar",
+        price:"4500",
+        img:"https://images.unsplash.com/photo-1604908176997-4317c3c8d1a6"
+      },
+      {
+        hy:"Մսի տեսականի",
+        en:"Meat assortment",
+        price:"4800",
+        img:"https://images.unsplash.com/photo-1544025162-d76694265947"
+      },
+      {
+        hy:"Թարմ բանջարեղեն",
+        en:"Fresh vegetables",
+        price:"2500",
+        img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c"
+      }
+    ]
+  },
 
-  menu: {
-    appetizers: {
-      hy:"Նախուտեստներ",
-      en:"Appetizers",
-      items:[
-        {hy:"Իկրա", en:"Caviar", price:"4500"},
-        {hy:"Մսի տեսականի", en:"Meat assortment", price:"4800"},
-        {hy:"Թարմ բանջարեղեն", en:"Fresh vegetables", price:"2500"}
-      ]
-    },
+  salads: {
+    hy:"Աղցաններ",
+    en:"Salads",
+    items:[
+      {
+        hy:"Կեսար աղցան",
+        en:"Caesar salad",
+        price:"3600",
+        img:"https://images.unsplash.com/photo-1550304943-4f24f54ddde9"
+      },
+      {
+        hy:"Հունական աղցան",
+        en:"Greek salad",
+        price:"3000",
+        img:"https://images.unsplash.com/photo-1569058242253-92a9c755a0ec"
+      }
+    ]
+  },
 
-    hot: {
-      hy:"Տաք ուտեստներ",
-      en:"Hot Dishes",
-      items:[
-        {hy:"Քյուֆթա", en:"Kyufta", price:"7000"},
-        {hy:"Հավի քաբաբ", en:"Chicken kebab", price:"1200"},
-        {hy:"Տավարի քաբաբ", en:"Beef kebab", price:"1300"}
-      ]
-    },
+  hot: {
+    hy:"Տաք ուտեստներ",
+    en:"Hot Dishes",
+    items:[
+      {
+        hy:"Քյուֆթա",
+        en:"Kyufta",
+        price:"7000",
+        img:"https://images.unsplash.com/photo-1604908176997-4317c3c8d1a6"
+      },
+      {
+        hy:"Խոզի ռիբս",
+        en:"Pork ribs",
+        price:"5000",
+        img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
+      },
+      {
+        hy:"Հավի քաբաբ",
+        en:"Chicken kebab",
+        price:"1200",
+        img:"https://images.unsplash.com/photo-1550547660-d9450f859349"
+      }
+    ]
+  },
 
-    drinks: {
-      hy:"Խմիչքներ",
-      en:"Drinks",
-      items:[
-        {hy:"Ջուր", en:"Water", price:"300"},
-        {hy:"Մոխիտո", en:"Mojito", price:"2000"}
-      ]
-    }
+  drinks: {
+    hy:"Խմիչքներ",
+    en:"Drinks",
+    items:[
+      {
+        hy:"Մոխիտո",
+        en:"Mojito",
+        price:"2000",
+        img:"https://images.unsplash.com/photo-1582571352032-448f8b9c4c1b"
+      },
+      {
+        hy:"Կոլա",
+        en:"Cola",
+        price:"300",
+        img:"https://images.unsplash.com/photo-1581093588401-22c38a3a5f04"
+      }
+    ]
   }
 };
 
+/* LANGUAGE SWITCH */
 function setLang(l){
   lang = l;
   document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'));
   event.target.classList.add('active');
-  renderAll();
+  renderMenu();
 }
 
-function renderBest(){
-  const el = document.getElementById('best');
-  el.innerHTML='';
-  data.best.forEach(item=>{
-    el.innerHTML+=`
-      <div class="card">
-        <img src="${item.img}">
-        <div class="info">
-          <div>${item[lang]}</div>
-          <div class="price">${item.price}</div>
-        </div>
+/* RENDER MENU */
+function renderMenu(){
+  const container = document.getElementById('menu');
+  container.innerHTML = '';
+
+  Object.keys(data).forEach(category => {
+    const section = document.createElement('div');
+    section.className = 'section';
+
+    section.innerHTML = `
+      <div class="category-title">${data[category][lang]}</div>
+      <div class="grid">
+        ${data[category].items.map(item => `
+          <div class="card">
+            <img src="${item.img}">
+            <div class="info">
+              <div>${item[lang]}</div>
+              <div class="price">${item.price}</div>
+            </div>
+          </div>
+        `).join('')}
       </div>
     `;
+
+    container.appendChild(section);
   });
 }
 
-function renderTabs(){
-  const el=document.getElementById('tabs');
-  el.innerHTML='';
-  Object.keys(data.menu).forEach((key,i)=>{
-    el.innerHTML+=`<div class="tab ${i===0?'active':''}" onclick="openTab('${key}',this)">
-      ${data.menu[key][lang]}
-    </div>`;
-  });
-}
-
-function openTab(key,el){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-
-  const menu=document.getElementById('menu');
-  menu.innerHTML='';
-
-  data.menu[key].items.forEach(item=>{
-    menu.innerHTML+=`
-      <div class="menu-item">
-        <span>${item[lang]}</span>
-        <span class="price">${item.price}</span>
-      </div>
-    `;
-  });
-}
-
-function renderAll(){
-  renderBest();
-  renderTabs();
-  openTab(Object.keys(data.menu)[0], document.querySelector('.tab'));
-}
-
-renderAll();
+renderMenu();
 </script>
 
 </body>
