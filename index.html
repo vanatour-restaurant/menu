@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanatur Restaurant Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #000;
+      border-bottom: 1px solid #333;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+      letter-spacing: 2px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .category {
+      margin-bottom: 40px;
+    }
+
+    .category h2 {
+      border-bottom: 2px solid #444;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #f5c518;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #333;
+    }
+
+    .item-name {
+      font-weight: 500;
+    }
+
+    .price {
+      color: #f5c518;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #333;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Vanatur Restaurant</h1>
+  <p>Menu</p>
+</header>
+
+<div class="container">
+
+  <!-- APPETIZERS -->
+  <div class="category">
+    <h2>Appetizers</h2>
+
+    <div class="item">
+      <div class="item-name">Caviar</div>
+      <div class="price">4500</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Fish Assortment</div>
+      <div class="price">10000</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Armenian Cheese Assortment</div>
+      <div class="price">2300</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Meat Assortment</div>
+      <div class="price">4800</div>
+    </div>
+
+  </div>
+
+  <!-- SALADS -->
+  <div class="category">
+    <h2>Salads</h2>
+
+    <div class="item">
+      <div class="item-name">Caesar (Chicken)</div>
+      <div class="price">3600</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Caesar (Shrimp)</div>
+      <div class="price">4500</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Greek Salad</div>
+      <div class="price">3000</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Caprese</div>
+      <div class="price">2200</div>
+    </div>
+
+  </div>
+
+  <!-- HOT DISHES -->
+  <div class="category">
+    <h2>Hot Dishes</h2>
+
+    <div class="item">
+      <div class="item-name">Pork Ribs</div>
+      <div class="price">5000</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Beef Kebab</div>
+      <div class="price">1300</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Chicken Kebab</div>
+      <div class="price">1200</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Kyufta</div>
+      <div class="price">7000</div>
+    </div>
+
+  </div>
+
+  <!-- DRINKS -->
+  <div class="category">
+    <h2>Drinks</h2>
+
+    <div class="item">
+      <div class="item-name">Water</div>
+      <div class="price">300</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Cola / Fanta</div>
+      <div class="price">300</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Mojito</div>
+      <div class="price">2000</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Vanatur Restaurant
+</footer>
+
+</body>
+</html>
