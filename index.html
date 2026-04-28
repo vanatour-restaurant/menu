@@ -1,191 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
-  <meta charset="UTF-8">
-  <title>Vanatur Restaurant Menu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanatur Menu</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+}
 
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: #000;
-      border-bottom: 1px solid #333;
-    }
+header {
+  text-align: center;
+  padding: 30px;
+  background: #000;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 36px;
-      letter-spacing: 2px;
-    }
+h1 {
+  margin: 0;
+  color: #f5c518;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
+/* TABS */
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  background: #111;
+  border-bottom: 1px solid #333;
+}
 
-    .category {
-      margin-bottom: 40px;
-    }
+.tab {
+  padding: 15px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #aaa;
+}
 
-    .category h2 {
-      border-bottom: 2px solid #444;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      color: #f5c518;
-    }
+.tab.active {
+  color: #f5c518;
+  border-bottom: 2px solid #f5c518;
+}
 
-    .item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px dashed #333;
-    }
+/* CONTENT */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
 
-    .item-name {
-      font-weight: 500;
-    }
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px dashed #333;
+}
 
-    .price {
-      color: #f5c518;
-    }
+.price {
+  color: #f5c518;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      border-top: 1px solid #333;
-      font-size: 14px;
-      color: #aaa;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 26px;
-      }
-    }
-  </style>
+.hidden {
+  display: none;
+}
+</style>
 </head>
+
 <body>
 
 <header>
   <h1>Vanatur Restaurant</h1>
-  <p>Menu</p>
+  <p>Մենյու</p>
 </header>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('appetizers')">Նախուտեստներ</div>
+  <div class="tab" onclick="showTab('salads')">Աղցաններ</div>
+  <div class="tab" onclick="showTab('soups')">Ապուրներ</div>
+  <div class="tab" onclick="showTab('hot')">Տաք ուտեստներ</div>
+  <div class="tab" onclick="showTab('drinks')">Խմիչքներ</div>
+</div>
 
 <div class="container">
 
   <!-- APPETIZERS -->
-  <div class="category">
-    <h2>Appetizers</h2>
-
-    <div class="item">
-      <div class="item-name">Caviar</div>
-      <div class="price">4500</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Fish Assortment</div>
-      <div class="price">10000</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Armenian Cheese Assortment</div>
-      <div class="price">2300</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Meat Assortment</div>
-      <div class="price">4800</div>
-    </div>
-
+  <div id="appetizers" class="menu">
+    <div class="item"><span>Իկրա</span><span class="price">4500</span></div>
+    <div class="item"><span>Ձկան տեսականի</span><span class="price">10000</span></div>
+    <div class="item"><span>Հայկական պանրի տեսականի</span><span class="price">2300</span></div>
+    <div class="item"><span>Եվրոպական պանրի տեսականի</span><span class="price">4300</span></div>
+    <div class="item"><span>Մսի տեսականի</span><span class="price">4800</span></div>
+    <div class="item"><span>Տնական մսի տեսականի</span><span class="price">5500</span></div>
+    <div class="item"><span>Թթվի տեսականի</span><span class="price">1700</span></div>
+    <div class="item"><span>Քամած մածուն</span><span class="price">1000</span></div>
+    <div class="item"><span>Ղավուրմա</span><span class="price">3800</span></div>
+    <div class="item"><span>Թարմ բանջարեղեն</span><span class="price">2500</span></div>
+    <div class="item"><span>Հաց</span><span class="price">800</span></div>
   </div>
 
   <!-- SALADS -->
-  <div class="category">
-    <h2>Salads</h2>
+  <div id="salads" class="menu hidden">
+    <div class="item"><span>Ամառային աղցան</span><span class="price">2500</span></div>
+    <div class="item"><span>Հունական աղցան</span><span class="price">3000</span></div>
+    <div class="item"><span>Կեսար (հավով)</span><span class="price">3600</span></div>
+    <div class="item"><span>Կեսար (կրեվետկայով)</span><span class="price">4500</span></div>
+    <div class="item"><span>Կապրեզե</span><span class="price">2200</span></div>
+    <div class="item"><span>Հումուս</span><span class="price">1500</span></div>
+    <div class="item"><span>Մութաբալ</span><span class="price">2000</span></div>
+  </div>
 
-    <div class="item">
-      <div class="item-name">Caesar (Chicken)</div>
-      <div class="price">3600</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Caesar (Shrimp)</div>
-      <div class="price">4500</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Greek Salad</div>
-      <div class="price">3000</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Caprese</div>
-      <div class="price">2200</div>
-    </div>
-
+  <!-- SOUPS -->
+  <div id="soups" class="menu hidden">
+    <div class="item"><span>Սպաս</span><span class="price">1200</span></div>
+    <div class="item"><span>Սոլյանկա</span><span class="price">1800</span></div>
+    <div class="item"><span>Բորշ</span><span class="price">1700</span></div>
+    <div class="item"><span>Խարչո</span><span class="price">1700</span></div>
+    <div class="item"><span>Փիթի</span><span class="price">1700</span></div>
+    <div class="item"><span>Հավով ապուր</span><span class="price">1500</span></div>
   </div>
 
   <!-- HOT DISHES -->
-  <div class="category">
-    <h2>Hot Dishes</h2>
-
-    <div class="item">
-      <div class="item-name">Pork Ribs</div>
-      <div class="price">5000</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Beef Kebab</div>
-      <div class="price">1300</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Chicken Kebab</div>
-      <div class="price">1200</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Kyufta</div>
-      <div class="price">7000</div>
-    </div>
-
+  <div id="hot" class="menu hidden">
+    <div class="item"><span>Խոզի ռիբս</span><span class="price">5000</span></div>
+    <div class="item"><span>Խոզի չալաղաջ</span><span class="price">3700</span></div>
+    <div class="item"><span>Տավարի քաբաբ</span><span class="price">1300</span></div>
+    <div class="item"><span>Տոլմա</span><span class="price">2500</span></div>
+    <div class="item"><span>Քյուֆթա</span><span class="price">7000</span></div>
+    <div class="item"><span>Հավի քաբաբ</span><span class="price">1200</span></div>
+    <div class="item"><span>Հավի թևեր</span><span class="price">1500</span></div>
   </div>
 
   <!-- DRINKS -->
-  <div class="category">
-    <h2>Drinks</h2>
-
-    <div class="item">
-      <div class="item-name">Water</div>
-      <div class="price">300</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Cola / Fanta</div>
-      <div class="price">300</div>
-    </div>
-
-    <div class="item">
-      <div class="item-name">Mojito</div>
-      <div class="price">2000</div>
-    </div>
-
+  <div id="drinks" class="menu hidden">
+    <div class="item"><span>Ջուր</span><span class="price">300</span></div>
+    <div class="item"><span>Կոլա / Ֆանտա</span><span class="price">300</span></div>
+    <div class="item"><span>Կոմպոտ</span><span class="price">1500</span></div>
+    <div class="item"><span>Մոխիտո</span><span class="price">2000</span></div>
+    <div class="item"><span>Գինի</span><span class="price">3000+</span></div>
+    <div class="item"><span>Օղի</span><span class="price">7000+</span></div>
   </div>
 
 </div>
 
-<footer>
-  © 2026 Vanatur Restaurant
-</footer>
+<script>
+function showTab(tabId) {
+  document.querySelectorAll('.menu').forEach(el => el.classList.add('hidden'));
+  document.getElementById(tabId).classList.remove('hidden');
+
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
 
 </body>
 </html>
